@@ -1,26 +1,37 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import {
+    Code,
+    CodeXml,
+    Github,
+    Calculator,
+    Volleyball,
+    JapaneseYen
+} from "lucide-react";
+import { DiJavascript } from "react-icons/di";
+import { FaReact, FaPython, FaJava, FaMicrosoft, FaRunning  } from "react-icons/fa";
+import { TbBrandCpp } from "react-icons/tb";
 
 const skills = [
     // Web Development
-    { name: "HTML/CSS", level: 90, category: "webdev" },
-    { name: "Javascript", level: 60, category: "webdev" },
-    { name: "React/Vite", level: 50, category: "webdev" },
+    { name: "HTML/CSS", level: 90, category: "webdev", icon: CodeXml },
+    { name: "Javascript", level: 60, category: "webdev", icon: DiJavascript },
+    { name: "React/Vite", level: 50, category: "webdev", icon: FaReact },
 
     // Languages
-    { name: "Python", level: 90, category: "languages" },
-    { name: "Java", level: 80, category: "languages" },
-    { name: "C++", level: 40, category: "languages" },
+    { name: "Python", level: 90, category: "languages", icon: FaPython },
+    { name: "Java", level: 80, category: "languages", icon: FaJava },
+    { name: "C++", level: 40, category: "languages", icon: TbBrandCpp },
 
     // Technical
-    { name: "Git/Github", level: 75, category: "technical" },
-    { name: "MATLAB", level: 50, category: "technical" },
-    { name: "Microsoft Office Suite", level: 90, category: "technical" },
+    { name: "Git/Github", level: 75, category: "technical", icon: Github },
+    { name: "MATLAB", level: 50, category: "technical", icon: Calculator },
+    { name: "Microsoft Office Suite", level: 90, category: "technical", icon: FaMicrosoft },
 
     // Fun
-    { name: "Volleyball", level: 80, category: "fun" },
-    { name: "Running", level: 75, category: "fun" },
-    { name: "日本語", level: 1, category: "fun" },
+    { name: "Volleyball", level: 80, category: "fun", icon: Volleyball },
+    { name: "Running", level: 75, category: "fun", icon: FaRunning },
+    { name: "日本語", level: 1, category: "fun", icon: JapaneseYen },
 ]
 
 const categories = ["all", "webdev", "languages", "technical", "fun"]
@@ -58,27 +69,31 @@ export const SkillsSection = () => {
 
                 {/*Skills*/}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredSkills.map((skill, key) =>(
-                        <div
-                            key={key}
-                            className="bg-card p-6 rounded-lg shadow-xs card-hover"
-                        >
-                            <div className="text-left mb-4">
-                                <h3 className="font-semibold text-lg"> {skill.name}</h3>
-                            </div>
-                            <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
-                                <div
-                                    className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
-                                    style={{width: skill.level + "%"}}
-                                />
-                            </div>
-                            <div className="text-right mt-1">
+                    {filteredSkills.map((skill, key) => {
+                        const Icon = skill.icon;
+                        return (
+                            <div
+                                key={key}
+                                className="bg-card p-6 rounded-lg shadow-xs card-hover"
+                            >
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="font-semibold text-lg"> {skill.name}</h3>
+                                    <Icon className="h-5 w-5 text-primary"/>
+                                </div>
+                                <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
+                                    <div
+                                        className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
+                                        style={{width: skill.level + "%"}}
+                                    />
+                                </div>
+                                <div className="text-right mt-1">
                                 <span className="text-sm text-muted-foreground">
                                     {skill.level}%
                                 </span>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>
