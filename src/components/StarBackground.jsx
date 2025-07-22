@@ -42,7 +42,7 @@ export const StarBackground = () => {
     };
 
     const generateMeteors = () => {
-        const numberOfMeteors = 6;
+        const numberOfMeteors = Math.floor(Math.random() * 6 + 4);
         const newMeteors = [];
 
         for (let i = 0; i < numberOfMeteors; i++) {
@@ -82,7 +82,7 @@ export const StarBackground = () => {
                     className="meteor animate-meteor purple"
                     style={{
                         width: meteor.size * 50 + "px",
-                        height: meteor.size * 4 + "px",
+                        height: meteor.size * 2 + "px",
                         left: meteor.x + "%",
                         top: meteor.y + "%",
                         animationDelay: meteor.delay,
