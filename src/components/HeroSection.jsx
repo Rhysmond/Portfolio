@@ -1,6 +1,28 @@
+import { useEffect, useRef, useState } from "react";
 import { ArrowDown } from "lucide-react";
 
 export const HeroSection = () => {
+    const scrollRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!scrollRef.current) return;
+
+            const rect = scrollRef.current.getBoundingClientRect();
+            const midpoint = window.innerHeight / 2;
+
+            if (rect.top < midpoint) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <section
             id="hero"
@@ -35,9 +57,12 @@ export const HeroSection = () => {
                 </div>
             </div>
 
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+            <div
+                ref={scrollRef}
+                className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}
+            >
                 <span className="text-sm text-muted-foreground mb-2"> Scroll </span>
-                <ArrowDown className="h-5 w-5 text-primary"/>
+                <ArrowDown className="h-5 w-5 text-primary animate-bounce"/>
             </div>
         </section>
     )
