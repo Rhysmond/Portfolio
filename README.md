@@ -1,1 +1,1 @@
-Deployed using Vercel: https://portfolio-xi-swart-98.vercel.app/
+Deployed on Vercel: https://portfolio-xi-swart-98.vercel.app/

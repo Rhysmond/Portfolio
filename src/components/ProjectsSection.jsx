@@ -8,7 +8,7 @@ const projects = [
         image: "/projects/project1.png",
         tags: ["Python", "Pygame", "Tiled"],
         demoUrl: "#",
-        githubUrl: "#",
+        githubUrl: "https://github.com/Rhysmond/Orbital25/tree/main",
     },
     {
         id: 2,
@@ -26,7 +26,7 @@ const projects = [
         image: "/projects/project3.png",
         tags: ["React", "Vite", "TailwindCSS"],
         demoUrl: "#",
-        githubUrl: "#",
+        githubUrl: "https://github.com/Rhysmond/Portfolio",
     },
 ]
 

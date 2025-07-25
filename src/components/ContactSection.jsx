@@ -74,12 +74,11 @@ export const ContactSection = () => {
                                     <Phone className="h-6 w-6 text-primary"/>{" "}
                                 </div>
                                 <div>
-                                    <h4 className="font-medium"> Phone</h4>
+                                    <h4 className="font-medium"> Telegram</h4>
                                     <a
-                                        href="tel:+6597872323"
-                                        className="text-muted-foreground hover:text-primary transition-colors"
-                                    >
-                                        +65 97872323
+                                        href="https://t.me/Rhyssyboy"
+                                        className="text-muted-foreground hover:text-primary transition-colors">
+                                        @Rhyssyboy
                                     </a>
                                 </div>
                             </div>
@@ -101,16 +100,16 @@ export const ContactSection = () => {
                         <div className="pt-8">
                             <h4 className="font-medium mb-4"> Connect With Me</h4>
                             <div className="flex space-x-4 justify-center">
-                                <a href="#" target="_blank">
+                                <a href="https://www.linkedin.com/in/rhysmond-cheng-34103329a/" target="_blank">
                                     <Linkedin className="hover:text-primary"/>
                                 </a>
-                                <a href="#" target="_blank">
+                                <a href="https://github.com/Rhysmond" target="_blank">
                                     <Github className="hover:text-primary"/>
                                 </a>
-                                <a href="#" target="_blank">
+                                <a href="https://www.instagram.com/rhyssyboy/" target="_blank">
                                     <Instagram className="hover:text-primary"/>
                                 </a>
-                                <a href="#" target="_blank">
+                                <a href="https://www.facebook.com/rhysmond.cheng.1/" target="_blank">
                                     <Facebook className="hover:text-primary"/>
                                 </a>
                             </div>
