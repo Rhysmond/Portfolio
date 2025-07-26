@@ -13,12 +13,28 @@ import {
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast"
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 export const ContactSection = () => {
     const { toast } = useToast();
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const SERVICE_ID = "service_r8fac3h";
+    const TEMPLATE_ID = "template_625efzq";
+    const PUBLIC_KEY =  "agDO0RzsI9zSPZln5";
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY).then(() => {
+           setFormData({name: "", email: "", message: ""})
+        }).catch(() => alert("Oops!"));
 
         setIsSubmitting(true);
 
@@ -137,8 +153,10 @@ export const ContactSection = () => {
                                     id="name"
                                     name="name"
                                     required
+                                    value={formData.name}
                                     className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
                                     placeholder="Rhysmond Cheng..."
+                                    onChange={(e) => setFormData({...formData, name: e.target.value})}
                                 />
                             </div>
 
@@ -155,8 +173,10 @@ export const ContactSection = () => {
                                     id="email"
                                     name="email"
                                     required
+                                    value={formData.email}
                                     className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
                                     placeholder="chengrhysmond@gmail.com"
+                                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                                 />
                             </div>
 
@@ -172,8 +192,10 @@ export const ContactSection = () => {
                                     id="message"
                                     name="message"
                                     required
+                                    value={formData.message}
                                     className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
                                     placeholder="Hello, I'd like to talk about..."
+                                    onChange={(e) => setFormData({...formData, message: e.target.value})}
                                 />
                             </div>
 
