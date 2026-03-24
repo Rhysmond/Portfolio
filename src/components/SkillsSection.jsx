@@ -68,29 +68,18 @@ export const SkillsSection = () => {
                 </div>
 
                 {/*Skills*/}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex flex-wrap justify-center gap-8">
                     {filteredSkills.map((skill, key) => {
                         const Icon = skill.icon;
                         return (
                             <div
                                 key={key}
-                                className="bg-card p-6 rounded-lg shadow-xs card-hover"
+                                className="group relative flex flex-col items-center w-[calc((100%-5*2rem)/6)]"
                             >
-                                <div className="flex items-center justify-between mb-4">
-                                    <h3 className="font-semibold text-lg"> {skill.name}</h3>
-                                    <Icon className="h-5 w-5 text-primary"/>
-                                </div>
-                                <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
-                                    <div
-                                        className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
-                                        style={{width: skill.level + "%"}}
-                                    />
-                                </div>
-                                <div className="text-right mt-1">
-                                <span className="text-sm text-muted-foreground">
-                                    {skill.level}%
+                                <Icon className="h-14 w-14 text-primary transition-transform duration-300 group-hover:scale-125"/>
+                                <span className="mt-2 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                    {skill.name}
                                 </span>
-                                </div>
                             </div>
                         );
                     })}
